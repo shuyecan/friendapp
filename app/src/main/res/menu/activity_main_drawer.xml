@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+        <item
+            android:id="@+id/nav_zuoxi"
+            android:icon="@drawable/ic_zuoxidp"
+            android:title="作息管理" />
+        <item
+            android:id="@+id/nav_beiwang"
+            android:icon="@drawable/ic_edit_black_24dp"
+            android:title="行程备忘" />
+
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="设置" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_close_black_24dp"
+            android:title="退出登陆" />
+
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="分享" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="通知" />
+        </menu>
+    </item>
+
+</menu>
