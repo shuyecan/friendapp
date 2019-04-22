@@ -28,7 +28,8 @@
             android:name=".activity.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".activity.NotbookActivity" />
-        <activity android:name=".activity.Addnotactivity"></activity>
+        <activity android:name=".activity.Addnotactivity" />
+        <activity android:name=".activity.Memorandumactivity"></activity>
     </application>
 
 </manifest>
