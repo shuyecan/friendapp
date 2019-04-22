@@ -32,6 +32,7 @@ import butterknife.ButterKnife;
 import myfriend.com.friendapp.Fragment.LinkmanFragment;
 import myfriend.com.friendapp.Fragment.MessageFragment;
 import myfriend.com.friendapp.activity.LoginActivity;
+import myfriend.com.friendapp.activity.Memorandumactivity;
 import myfriend.com.friendapp.activity.NotbookActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -151,9 +152,10 @@ public class MainActivity extends AppCompatActivity
         Intent intent;
         if (id == R.id.nav_zuoxi) {
            intent = new Intent(MainActivity.this,NotbookActivity.class);
-           startActivity(intent);
+            startActivity(intent);
         } else if (id == R.id.nav_beiwang) {
-
+            intent = new Intent(MainActivity.this,Memorandumactivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

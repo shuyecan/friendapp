@@ -3,11 +3,13 @@
     <dbname value="mydata" >
 
     </dbname>
-    <version value="2">
+    <version value="4">
     </version>
 
     <list>
         <mapping class="myfriend.com.friendapp.Been.Notbookbeen">
+    </mapping>
+        <mapping class="myfriend.com.friendapp.Been.Memorandbeen">
         </mapping>
     </list>
 </litepal>

@@ -1,10 +1,22 @@
 package myfriend.com.friendapp.Been;
 
-public class Memorandbeen {
+import org.litepal.LitePal;
+import org.litepal.crud.LitePalSupport;
+
+public class Memorandbeen extends LitePalSupport {
     String content;
     String address;
     String iscall;
     String time;
+    int img;
+
+    public int getImg() {
+        return img;
+    }
+
+    public void setImg(int img) {
+        this.img = img;
+    }
 
     public String getContent() {
         return content;

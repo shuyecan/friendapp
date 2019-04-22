@@ -13,6 +13,7 @@ import java.util.List;
 
 import myfriend.com.friendapp.Been.Memorandbeen;
 import myfriend.com.friendapp.R;
+import myfriend.com.friendapp.Util.CalendarReminderUtils;
 
 public class Memoraapther extends RecyclerView.Adapter<Memoraapther.ViewHolder>{
     private List<Memorandbeen> list;
@@ -35,11 +36,25 @@ public class Memoraapther extends RecyclerView.Adapter<Memoraapther.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Memoraapther.ViewHolder viewHolder, int i) {
-            Memorandbeen memorandbeen = list.get(i);
+    public void onBindViewHolder(@NonNull Memoraapther.ViewHolder viewHolder, final int i) {
+            final Memorandbeen memorandbeen = list.get(i);
             viewHolder.text_address.setText(memorandbeen.getAddress());
             viewHolder.text_content.setText(memorandbeen.getContent());
             viewHolder.text_time.setText(memorandbeen.getTime());
+            viewHolder.text_delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    memorandbeen.delete();
+                    deleteitem(i,memorandbeen.getContent());
+                }
+            });
+    }
+
+    public void deleteitem(int p,String t){
+        list.remove(p);
+        CalendarReminderUtils.deleteCalendarEvent(context,t);
+        notifyItemRemoved(p);
+        notifyDataSetChanged();
     }
 
     @Override

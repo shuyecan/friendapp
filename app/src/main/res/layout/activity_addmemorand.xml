@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.AddmemorandActivity">
+
+
+    <include layout="@layout/mtooler">
+
+    </include>
+
+    <View
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/gray"
+        />
+
+    <LinearLayout
+        android:id="@+id/lin_time"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_marginLeft="15dp"
+            android:text="时间"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/text_start_time"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="50dp" />
+
+        <ImageView
+            android:src="@drawable/jiantou"
+            android:layout_gravity="center_vertical"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/gray"
+        />
+
+
+    <View
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/gray"
+        />
+    <LinearLayout
+        android:id="@+id/lin_address"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:text="地点"
+            android:layout_marginLeft="15dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+
+        <EditText
+            android:layout_marginRight="15dp"
+            android:id="@+id/edt_address"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/gray"
+        />
+
+
+    <View
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/gray"
+        />
+
+
+
+    <LinearLayout
+        android:id="@+id/lin_content"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:text="事项"
+            android:layout_marginLeft="15dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+
+        <EditText
+            android:layout_marginRight="15dp"
+            android:id="@+id/edt_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/gray"
+        />
+
+
+    <View
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/gray"
+        />
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:text="是否提醒"
+            android:layout_marginLeft="15dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+
+        <Switch
+            android:layout_marginRight="15dp"
+            android:id="@+id/swt_isshow"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/gray"
+        />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round"
+        android:text="保存"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        >
+
+    </Button>
+</LinearLayout>
