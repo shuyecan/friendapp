@@ -3,8 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:src="@drawable/linkman"
+    <com.yanzhenjie.recyclerview.SwipeRecyclerView
+        android:id="@+id/rec_friend"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+    </com.yanzhenjie.recyclerview.SwipeRecyclerView>
 </LinearLayout>

@@ -38,9 +38,11 @@ import myfriend.com.friendapp.Been.Memorandbeen;
 import myfriend.com.friendapp.Been.Userbeen;
 import myfriend.com.friendapp.Fragment.LinkmanFragment;
 import myfriend.com.friendapp.Fragment.MessageFragment;
+import myfriend.com.friendapp.Fragment.PengyouquanFragment;
 import myfriend.com.friendapp.activity.LoginActivity;
 import myfriend.com.friendapp.activity.Memorandumactivity;
 import myfriend.com.friendapp.activity.NotbookActivity;
+import myfriend.com.friendapp.activity.SelectFriendActivity;
 import myfriend.com.friendapp.activity.UserInfoActivity;
 
 public class MainActivity extends AppCompatActivity
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity
     private void initview() {
         fragmentList.add(new MessageFragment());
         fragmentList.add(new LinkmanFragment());
+        fragmentList.add(new PengyouquanFragment());
         mainViewpage.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
@@ -136,6 +139,10 @@ public class MainActivity extends AppCompatActivity
                     case R.id.tab_two:
                         mainViewpage.setCurrentItem(1,false);
                         return true;
+                    case R.id.tab_thire:
+                        mainViewpage.setCurrentItem(2,false);
+                        return true;
+
                 }
                 return false;
             }
@@ -163,6 +170,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this,SelectFriendActivity.class);
+            startActivity(intent);
             return true;
         }
 
