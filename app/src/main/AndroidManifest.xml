@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="myfriend.com.friendapp">
-
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".Myapplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.UserInfoActivity"></activity>
+        <activity android:name=".activity.ResiActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -31,7 +35,7 @@
         <activity android:name=".activity.NotbookActivity" />
         <activity android:name=".activity.Addnotactivity" />
         <activity android:name=".activity.Memorandumactivity" />
-        <activity android:name=".activity.AddmemorandActivity"></activity>
+        <activity android:name=".activity.AddmemorandActivity" />
     </application>
 
 </manifest>

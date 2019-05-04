@@ -7,6 +7,7 @@ import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -22,18 +23,25 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.litepal.LitePal;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import myfriend.com.friendapp.Been.Memorandbeen;
+import myfriend.com.friendapp.Been.Userbeen;
 import myfriend.com.friendapp.Fragment.LinkmanFragment;
 import myfriend.com.friendapp.Fragment.MessageFragment;
 import myfriend.com.friendapp.activity.LoginActivity;
 import myfriend.com.friendapp.activity.Memorandumactivity;
 import myfriend.com.friendapp.activity.NotbookActivity;
+import myfriend.com.friendapp.activity.UserInfoActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +51,9 @@ public class MainActivity extends AppCompatActivity
     @BindView(R.id.main_botton)
     BottomNavigationView mainBotton;
     List<Fragment> fragmentList = new ArrayList<>();
+    View draw;
+    TextView text_user,text_phone;
+    Userbeen userbeen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +69,27 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        final View draw = navigationView.inflateHeaderView(R.layout.nav_header_main);
+         draw = navigationView.inflateHeaderView(R.layout.nav_header_main);
         ImageView userImg = draw.findViewById(R.id.imageView);
+        try {
+             userbeen = LitePal.findAll(Userbeen.class).get(0);
+        }catch (Exception e){
+
+        }
+        text_user = draw.findViewById(R.id.user);
+        text_phone = draw.findViewById(R.id.phone);
+        if(userbeen!=null){
+            text_user.setText(userbeen.getUsername());
+            text_phone.setText(userbeen.getPhone());
+        }
         userImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!text_user.getText().equals("未登录")){
+                    return;
+                }
                 Intent intent =new Intent(MainActivity.this,LoginActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,2000);
             }
         });
         initview();
@@ -157,9 +182,15 @@ public class MainActivity extends AppCompatActivity
             intent = new Intent(MainActivity.this,Memorandumactivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_slideshow) {
-
+            text_user.setText("未登录");
+            text_phone.setText("");
+            LitePal.deleteAll(Userbeen.class);
+            Toast.makeText(this, "退出登陆成功！", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_manage) {
-
+            if(!text_user.getText().equals("未登录")){
+                Intent intent3 = new Intent(MainActivity.this, UserInfoActivity.class);
+                startActivityForResult(intent3,1500);
+            }
         } else if (id == R.id.nav_share) {
             Intent intent4 = new Intent(Intent.ACTION_SEND);
             intent4.setType("text/plain");
@@ -207,5 +238,21 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==2000){
+            if(data!=null) {
+                text_phone.setText(data.getStringExtra("phone"));
+                text_user.setText(data.getStringExtra("username"));
+            }
+        }else if(requestCode==1500){
+            if(data!=null) {
+                text_phone.setText(data.getStringExtra("phone"));
+                text_user.setText(data.getStringExtra("username"));
+            }
+        }
     }
 }

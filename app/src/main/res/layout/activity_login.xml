@@ -66,7 +66,7 @@
                     android:maxLines="1"
                     android:singleLine="true" />
 
-            </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>z
 
             <Button
                 android:id="@+id/btn_login"
@@ -77,6 +77,15 @@
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/text_nouser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="没有账号？点击注册"
+                android:textColor="@color/blue"
+                />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

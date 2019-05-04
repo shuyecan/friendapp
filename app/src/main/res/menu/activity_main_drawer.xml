@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <item
+        android:id="@+id/nav_manage"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="信息设置" />
         <item
             android:id="@+id/nav_zuoxi"
             android:icon="@drawable/ic_zuoxidp"
@@ -12,10 +16,7 @@
             android:icon="@drawable/ic_edit_black_24dp"
             android:title="行程备忘" />
 
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="设置" />
+
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_close_black_24dp"

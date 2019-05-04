@@ -6,6 +6,7 @@ import org.litepal.crud.LitePalSupport;
 public class Notbookbeen extends LitePalSupport {
     String data;
     String conent;
+
     public String getData() {
         return data;
     }

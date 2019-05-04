@@ -33,7 +33,7 @@ public class Memorandumactivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memorandumactivity);
         ButterKnife.bind(this);
-        LitePal.initialize(this);
+
         inittoorer();
         initdata();
     }
