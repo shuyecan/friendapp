@@ -67,9 +67,9 @@ public class ResiActivity extends AppCompatActivity {
     }
 
     private void onresi(String name, String pwd, String pho) {
-        RequestParams params = new RequestParams("http://10.0.2.2:8080/MybatisDemo/demo/addUserInfo");
+        RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/demo/addUserInfo");
         params.addQueryStringParameter("Username",name);
-        params.addQueryStringParameter("Password",pwd);
+        params.addQueryStringParameter("Pwd",pwd);
         params.addQueryStringParameter("Phone",pho);
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override

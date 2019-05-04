@@ -109,9 +109,9 @@ public class UserInfoActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(user)&&TextUtils.isEmpty(pwd)&&TextUtils.isEmpty(phone)){
             Toast.makeText(this, "不能为空！", Toast.LENGTH_SHORT).show();
         }else {
-            RequestParams params = new RequestParams("http://10.0.2.2:8080/MybatisDemo/demo/updaMarkUser");
+            RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/demo/updaMarkUser");
             params.addQueryStringParameter("Username",user);
-            params.addQueryStringParameter("Password",pwd);
+            params.addQueryStringParameter("Pwd",pwd);
             params.addQueryStringParameter("Phone",phone);
             params.addQueryStringParameter("Address",address);
             params.addQueryStringParameter("Gender",xinbie);

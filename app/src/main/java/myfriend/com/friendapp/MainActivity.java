@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
          draw = navigationView.inflateHeaderView(R.layout.nav_header_main);
@@ -94,6 +96,10 @@ public class MainActivity extends AppCompatActivity
                 startActivityForResult(intent,2000);
             }
         });
+
+            text_phone.setText(getIntent().getStringExtra("phone"));
+            text_user.setText(getIntent().getStringExtra("username"));
+
         initview();
     }
 
@@ -195,6 +201,9 @@ public class MainActivity extends AppCompatActivity
             text_phone.setText("");
             LitePal.deleteAll(Userbeen.class);
             Toast.makeText(this, "退出登陆成功！", Toast.LENGTH_SHORT).show();
+            intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
+            finish();
         } else if (id == R.id.nav_manage) {
             if(!text_user.getText().equals("未登录")){
                 Intent intent3 = new Intent(MainActivity.this, UserInfoActivity.class);
@@ -253,10 +262,7 @@ public class MainActivity extends AppCompatActivity
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==2000){
-            if(data!=null) {
-                text_phone.setText(data.getStringExtra("phone"));
-                text_user.setText(data.getStringExtra("username"));
-            }
+
         }else if(requestCode==1500){
             if(data!=null) {
                 text_phone.setText(data.getStringExtra("phone"));

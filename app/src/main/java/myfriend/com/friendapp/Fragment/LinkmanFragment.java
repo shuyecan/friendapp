@@ -93,15 +93,15 @@ public class LinkmanFragment extends Fragment {
             }
         });
 
-        FriendBeen friendBeen = new FriendBeen();
-        friendBeen.setFriendid(1);
-        friendBeen.setUsername("的货物");
-        list.add(friendBeen);
+//        FriendBeen friendBeen = new FriendBeen();
+//        friendBeen.setFriendid(1);
+//        friendBeen.setUsername("的货物");
+//        list.add(friendBeen);
 
-        FriendBeen friendBeen2 = new FriendBeen();
-        friendBeen2.setFriendid(1);
-        friendBeen2.setUsername("哈哈哈");
-        list.add(friendBeen2);
+//        FriendBeen friendBeen2 = new FriendBeen();
+//        friendBeen2.setFriendid(1);
+//        friendBeen2.setUsername("哈哈哈");
+//        list.add(friendBeen2);
         apther = new FriendApther(list,getContext());
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         recFriend.setLayoutManager(layoutManager);

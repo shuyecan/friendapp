@@ -60,9 +60,6 @@ public class LoginActivity extends AppCompatActivity {
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("登录");
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @OnClick({R.id.btn_login,R.id.text_nouser})
@@ -89,9 +86,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void onlogin(String text, String text1) {
-        RequestParams params = new RequestParams("http://10.0.2.2:8080/MybatisDemo/demo/getMarkUser");
+        RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/demo/getMarkUser");
         params.addQueryStringParameter("Username",text);
-        params.addQueryStringParameter("Password",text1);
+        params.addQueryStringParameter("Pwd",text1);
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -104,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("username",userbeen.getUsername());
                     intent.putExtra("phone",userbeen.getPhone());
-                    setResult(2000,intent);
+                    startActivity(intent);
                     finish();
                 }else {
                     Toast.makeText(LoginActivity.this, "用户名或密码错误！", Toast.LENGTH_SHORT).show();

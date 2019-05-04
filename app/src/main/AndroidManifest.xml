@@ -21,10 +21,9 @@
         <activity android:name=".activity.UserInfoActivity" />
         <activity android:name=".activity.ResiActivity" />
         <activity
-            android:windowSoftInputMode="adjustResize"
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".activity.LoginActivity"
+            android:label="@string/title_activity_login"
+           >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,8 +31,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".MainActivity"
+            android:label="@string/app_name" />
         <activity android:name=".activity.NotbookActivity" />
         <activity android:name=".activity.Addnotactivity" />
         <activity android:name=".activity.Memorandumactivity" />
