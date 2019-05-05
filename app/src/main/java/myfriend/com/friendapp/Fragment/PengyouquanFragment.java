@@ -11,6 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONObject;
+import org.litepal.LitePal;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +29,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import myfriend.com.friendapp.Been.BaseBeen;
 import myfriend.com.friendapp.Been.FriendBeen;
+import myfriend.com.friendapp.Been.Userbeen;
 import myfriend.com.friendapp.R;
 import myfriend.com.friendapp.apther.Memoraapther;
 import myfriend.com.friendapp.apther.PyqApther;
@@ -58,7 +70,35 @@ public class PengyouquanFragment extends Fragment {
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         recyPyq.setLayoutManager(layoutManager);
         recyPyq.setAdapter(apther);
+        getdata();
+    }
 
+    private void getdata() {
+        RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/demo/getComments");
+        List<Userbeen> userbeenList = LitePal.findAll(Userbeen.class);
+        params.addQueryStringParameter("oneselfId",userbeenList.get(0).getUserid());
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                Toast.makeText(x.app(), ex.toString(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
     }
 
     @OnClick(R.id.btn_save)
@@ -70,6 +110,36 @@ public class PengyouquanFragment extends Fragment {
             friendBeen.setUsername("我");
             friendBeen.setContent(content);
             apther.addData(friendBeen);
+            setdata(friendBeen);
         }
+    }
+
+    private void setdata(FriendBeen friendBeen) {
+        RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/demo/addCommentMsg");
+        List<Userbeen> userbeenList = LitePal.findAll(Userbeen.class);
+        params.addQueryStringParameter("msg",friendBeen.getContent());
+        params.addQueryStringParameter("title",friendBeen.getUsername());
+        params.addQueryStringParameter("senUserId",userbeenList.get(0).getUserid());
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                Toast.makeText(x.app(), ex.toString(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
     }
 }

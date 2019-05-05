@@ -1,7 +1,7 @@
 package myfriend.com.friendapp.Been;
 
 public class FriendBeen {
-    int friendid;
+    String friendid;
     String content;
     String username;
 
@@ -13,11 +13,11 @@ public class FriendBeen {
         this.content = content;
     }
 
-    public int getFriendid() {
+    public String getFriendid() {
         return friendid;
     }
 
-    public void setFriendid(int friendid) {
+    public void setFriendid(String friendid) {
         this.friendid = friendid;
     }
 

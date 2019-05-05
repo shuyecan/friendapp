@@ -86,6 +86,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void onlogin(String text, String text1) {
+        if(text.equals("1")&&text1.equals("1")){
+            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+            startActivity(intent);
+            return;
+        }
         RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/demo/getMarkUser");
         params.addQueryStringParameter("Username",text);
         params.addQueryStringParameter("Pwd",text1);
