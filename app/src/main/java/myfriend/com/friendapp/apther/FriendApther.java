@@ -17,6 +17,7 @@ import java.util.List;
 import myfriend.com.friendapp.Been.FriendBeen;
 import myfriend.com.friendapp.R;
 import myfriend.com.friendapp.Util.CalendarReminderUtils;
+import myfriend.com.friendapp.Util.Userserver;
 
 public class FriendApther extends SwipeRecyclerView.Adapter<FriendApther.ViewHolder> {
     private List<FriendBeen> list;
@@ -51,6 +52,8 @@ public class FriendApther extends SwipeRecyclerView.Adapter<FriendApther.ViewHol
     }
 
     public void deleteitem(int p){
+        Userserver userserver =new Userserver();
+        userserver.delectfriend(list.get(p).getFriendid(),context);
         list.remove(p);
         notifyItemRemoved(p);
     }

@@ -36,6 +36,7 @@ import butterknife.Unbinder;
 import myfriend.com.friendapp.Been.FriendBeen;
 import myfriend.com.friendapp.Been.Userbeen;
 import myfriend.com.friendapp.R;
+import myfriend.com.friendapp.Util.Userserver;
 import myfriend.com.friendapp.apther.FriendApther;
 import myfriend.com.friendapp.apther.Mian_messageApther;
 
@@ -45,7 +46,6 @@ public class LinkmanFragment extends Fragment {
     SwipeRecyclerView recFriend;
     List<FriendBeen> list = new ArrayList<>();
     FriendApther apther;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -84,9 +84,8 @@ public class LinkmanFragment extends Fragment {
 
         recFriend.setOnItemMenuClickListener(new OnItemMenuClickListener() {
             @Override
-            public void onItemClick(SwipeMenuBridge menuBridge, int adapterPosition) {
+            public void onItemClick(SwipeMenuBridge menuBridge, final int adapterPosition) {
                 menuBridge.closeMenu();
-                final int menuPosition = menuBridge.getPosition();
                 new MaterialDialog.Builder(getActivity())
                         .title("删除")
                         .content("确定删除该好友？")
@@ -95,7 +94,8 @@ public class LinkmanFragment extends Fragment {
                         .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
                             public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                apther.deleteitem(menuPosition);
+                                apther.deleteitem(adapterPosition);
+
                             }
                         })
                         .show();
@@ -118,6 +118,11 @@ public class LinkmanFragment extends Fragment {
         getdata();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getdata();
+    }
 
     private void getdata() {
         RequestParams params = new RequestParams(getResources().getString(R.string.ip)+"/MybatisDemo/demo/getUserFriend");
@@ -154,5 +159,11 @@ public class LinkmanFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LitePal.deleteAll(Userbeen.class);
     }
 }

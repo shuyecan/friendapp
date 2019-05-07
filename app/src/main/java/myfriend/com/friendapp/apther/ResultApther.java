@@ -16,6 +16,7 @@ import java.util.List;
 
 import myfriend.com.friendapp.Been.FriendBeen;
 import myfriend.com.friendapp.R;
+import myfriend.com.friendapp.Util.Userserver;
 
 public class ResultApther extends RecyclerView.Adapter<ResultApther.ViewHolder>{
     private List<FriendBeen> list;
@@ -39,10 +40,17 @@ public class ResultApther extends RecyclerView.Adapter<ResultApther.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ResultApther.ViewHolder viewHolder, int i) {
-            FriendBeen friendBeen = list.get(i);
+    public void onBindViewHolder(@NonNull final ResultApther.ViewHolder viewHolder, int i) {
+            final FriendBeen friendBeen = list.get(i);
             viewHolder.text_username.setText(friendBeen.getUsername());
             Glide.with(context).load(R.drawable.timg).into(viewHolder.img_usehead);
+            viewHolder.button_shenqing.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Userserver userserver= new Userserver();
+                    userserver.addfriend(friendBeen.getFriendid(),context);
+                }
+            });
     }
 
     @Override
@@ -56,6 +64,9 @@ public class ResultApther extends RecyclerView.Adapter<ResultApther.ViewHolder>{
         Button button_shenqing;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            text_username = itemView.findViewById(R.id.text_username);
+            img_usehead = itemView.findViewById(R.id.img_usehead);
+            button_shenqing = itemView.findViewById(R.id.button_shenqing);
         }
     }
 }

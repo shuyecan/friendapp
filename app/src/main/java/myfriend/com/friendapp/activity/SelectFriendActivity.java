@@ -24,6 +24,7 @@ import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -42,7 +43,7 @@ public class SelectFriendActivity extends AppCompatActivity {
     @BindView(R.id.rec_select_friend)
     RecyclerView rec_select_friend;
     ResultApther apther;
-    List<FriendBeen> list;
+    List<FriendBeen> list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
